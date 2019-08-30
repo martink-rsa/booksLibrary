@@ -1,0 +1,16 @@
+{
+  "name": "booklibrary",
+  "version": "0.0.1",
+  "description": "The Odin Project Book Library Project",
+  "main": "book.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "martink-rsa",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
