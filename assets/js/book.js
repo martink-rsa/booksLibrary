@@ -2,7 +2,7 @@
 
 const myLibrary = [];
 
-function Book(title, author, pages, ISBN, rating, isRead, bookImg = '/assets/images/no-book-cover.png') {
+function Book(title, author, pages, ISBN, rating, isRead, bookImg = './assets/images/no-book-cover.png') {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -111,7 +111,7 @@ function createBookElement(display, book) {
   iconContainer.addEventListener('click', () => { deleteBookFromLibrary(book); });
   let iconImage = document.createElement('img');
   iconImage.setAttribute('class', 'img-icon');
-  iconImage.setAttribute('src', '/assets/images/tick.svg');
+  iconImage.setAttribute('src', './assets/images/tick.svg');
   iconContainer.appendChild(iconImage);
   deleteControls.appendChild(iconContainer);
 
@@ -120,7 +120,7 @@ function createBookElement(display, book) {
   iconContainer.addEventListener('click', () => { hideDeleteDialog(book); });
   iconImage = document.createElement('img');
   iconImage.setAttribute('class', 'img-icon img-icon-cross');
-  iconImage.setAttribute('src', '/assets/images/cross.svg');
+  iconImage.setAttribute('src', './assets/images/cross.svg');
   iconContainer.appendChild(iconImage);
   deleteControls.appendChild(iconContainer);
 
@@ -155,7 +155,7 @@ function createBookElement(display, book) {
 
   iconImage = document.createElement('img');
   iconImage.setAttribute('class', 'img-icon');
-  iconImage.setAttribute('src', '/assets/images/tick.svg');
+  iconImage.setAttribute('src', './assets/images/tick.svg');
 
   elementTemplate.appendChild(iconImage);
   iconOverlay.appendChild(elementTemplate);
@@ -167,7 +167,7 @@ function createBookElement(display, book) {
 
   iconImage = document.createElement('img');
   iconImage.setAttribute('class', 'img-icon');
-  iconImage.setAttribute('src', '/assets/images/dustbin.svg');
+  iconImage.setAttribute('src', './assets/images/dustbin.svg');
   elementTemplate.appendChild(iconImage);
   iconOverlay.appendChild(elementTemplate);
 
@@ -246,13 +246,13 @@ function displayStatusMessage(message, messageType, book) {
   }, 2000);
 }
 
-const myBook1 = new Book('JavaScript The Definitive Guide', 'David Flanagan', 1096, '9780596805524', 5, true, '/assets/images/js-definitive-guide.jpeg');
+const myBook1 = new Book('JavaScript The Definitive Guide', 'David Flanagan', 1096, '9780596805524', 5, true, './assets/images/js-definitive-guide.jpeg');
 addBookToLibrary(myBook1);
-const myBook2 = new Book('The Art of War', 'Sun Tzu', 170, '9781590302255', 1, false, '/assets/images/sun-tzu-aow.jpg');
+const myBook2 = new Book('The Art of War', 'Sun Tzu', 170, '9781590302255', 1, false, './assets/images/sun-tzu-aow.jpg');
 addBookToLibrary(myBook2);
-const myBook3 = new Book('Clean Code', 'Robert C. Martin', 701, '9780132350884', 3, false, '/assets/images/clean-code-martin.jpg');
+const myBook3 = new Book('Clean Code', 'Robert C. Martin', 701, '9780132350884', 3, false, './assets/images/clean-code-martin.jpg');
 addBookToLibrary(myBook3);
-const myBook4 = new Book('Why I love my IBMi computer', 'Briggs I. Bi-em', 121, '13123', 2, false, '/assets/images/briggs-ibm.png');
+const myBook4 = new Book('Why I love my IBMi computer', 'Briggs I. Bi-em', 121, '13123', 2, false, './assets/images/briggs-ibm.png');
 addBookToLibrary(myBook4);
 const myBook5 = new Book('Good Book', 'Good author', 100, '13123', 5, false);
 addBookToLibrary(myBook5);
