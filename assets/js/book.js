@@ -69,7 +69,19 @@ function createBookElement(display, book) {
   const bookContainer = document.createElement('div');
   bookContainer.setAttribute('class', 'book-element');
   bookContainer.setAttribute('data-index', myLibrary.indexOf(book));
-  bookContainer.style.background = `url('${book.bookImg}') no-repeat`;
+  
+
+  // Background image container
+  const bgImgContainer = document.createElement('img');
+  bgImgContainer.setAttribute('class', 'img-bg');
+  bgImgContainer.setAttribute('src', book.bookImg);
+  bookContainer.appendChild(bgImgContainer);
+
+  // Background image shadow inset
+  const bgImgShadowInset = document.createElement('div');
+  bgImgShadowInset.setAttribute('class', 'img-bg-inset');
+  bookContainer.appendChild(bgImgShadowInset);
+
 
   // Overlay on hover
   const bookOverlay = document.createElement('div');
@@ -213,6 +225,7 @@ function createBookElement(display, book) {
 
   // Push book info to container
   bookOverlay.appendChild(bookInfoContainer);
+  console.log(bookOverlay);
 
   // Push to screen
   display.appendChild(bookContainer);
@@ -240,11 +253,21 @@ function displayStatusMessage(message, messageType, book) {
   }
   statusBar.classList.add('status-bar-content-show');
   statusBar.innerText = `'${book.title}' has been deleted.`;
+
   setTimeout(() => {
     statusBar.classList.remove('status-bar-content-show');
     statusBar.innerText = '';
   }, 2000);
 }
+
+const addBookBtn = document.getElementById('add-book');
+function showBookForm() {
+  const bookForm = document.getElementById('add-book-form');
+  bookForm.style.pointerEvents = 'all';
+  addBookBtn.style.display = 'none';
+  bookForm.classList.add('book-form-show');
+}
+addBookBtn.addEventListener('click', () => { showBookForm(); });
 
 const myBook1 = new Book('JavaScript The Definitive Guide', 'David Flanagan', 1096, '9780596805524', 5, true, './assets/images/js-definitive-guide.jpeg');
 addBookToLibrary(myBook1);
@@ -252,8 +275,8 @@ const myBook2 = new Book('The Art of War', 'Sun Tzu', 170, '9781590302255', 1, f
 addBookToLibrary(myBook2);
 const myBook3 = new Book('Clean Code', 'Robert C. Martin', 701, '9780132350884', 3, false, './assets/images/clean-code-martin.jpg');
 addBookToLibrary(myBook3);
-const myBook4 = new Book('Why I love my IBMi computer', 'Briggs I. Bi-em', 121, '13123', 2, false, './assets/images/briggs-ibm.png');
+const myBook4 = new Book('Why I love IBMi', 'Briggs I. Bi-em', 121, '1312398765432', 2, false, './assets/images/briggs-ibm.png');
 addBookToLibrary(myBook4);
-const myBook5 = new Book('Good Book', 'Good author', 100, '13123', 5, false);
+const myBook5 = new Book('Unknown Book', 'Unknown Author', 100, '3789654113123', 5, false);
 addBookToLibrary(myBook5);
 render();

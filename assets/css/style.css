@@ -1,28 +1,63 @@
+:root {
+  /* Used for rounded corners on boxes. 
+  This will need to be applied to multiple divs,
+  such as the overlays. These elements include:
+    The book element
+    The info overlay
+    The delete confirmation overlay
+  If the decision comes to not use rounded edges,
+  then just set to 0 instead of changing the CSS.
+  */
+  --border-rounding: 2%;
+  --body-font: 'Poppins', sans-serif;
+}
+
 * {
   padding: 0;
   margin: 0;
 }
 
+.no-select {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
 html, body {
-  background: lightslategray;
-  height: 100%;
+
   font-family: 'Red Hat Text', sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-stroke: 0.35px;
+
+  min-height: 100%;
+  width: 100%;
+
 }
 
+body {
+  background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
+  background-size: cover;
+  background-repeat: no-repeat; 
+}
+
+
+
 .wrapper-main {
-  background: rebeccapurple;
+  /*
   height: 100%;
+  width: 100%;
+*/
 }
 
 .container-main {
   display: flex;
   flex-direction: column;
-  background: pink;
   height: 100%;
+  width: 100%;
+
 }
 
 .status-bar-container {
@@ -31,7 +66,6 @@ html, body {
   height: 50px;
   width: 100%;
   bottom: 0;
-
   padding: 0 20px 0 0;
 }
 
@@ -52,29 +86,67 @@ html, body {
 
 .header-container {
   background: gray;
-  height: 50px;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.67);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.67);
+  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.67);
+
+}
+
+/* LOGO */
+.logo-container {
+  display: flex;
+
+}
+
+.img-logo {
+  max-width: 100%;
+  height: auto;
 }
 
 .container-books-display {
-  background: white;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  /* INSET SHADOW HERE LOOKS PRETTY GOOD.
+    MODIFY TO USE OR DELETE 
+  -webkit-box-shadow: inset 0px 0px 28px 0px rgba(255,0,255,1);
+  -moz-box-shadow: inset 0px 0px 28px 0px rgba(255,0,255,1);
+  box-shadow: inset 0px 0px 28px 0px rgba(255,0,255,1); */
 }
 
 .book-element {
   position: relative;
   width: 200px;
   height: 300px;
-  margin: 10px 0;
+  margin: 10px 20px;
   color: white;
-  background: url('/assets/images/js-definitive-guide.jpeg') no-repeat;
-  /*background-size: 100%;*/
-  border: 1px solid rgba(0,0,0,.3);
-  border-radius: 1%;
+
+  border-radius: var(--border-rounding);
+
   -webkit-box-shadow: 1px 12px 17px -6px rgba(0,0,0,0.73);
   -moz-box-shadow: 1px 12px 17px -6px rgba(0,0,0,0.73);
   box-shadow: 1px 12px 17px -6px rgba(0,0,0,0.73);
+
+  
+}
+
+.img-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  border-radius: var(--border-rounding);
+}
+
+.img-bg-inset {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-box-shadow: inset 0px 0px 70px 0px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: inset 0px 0px 70px 0px rgba(0, 0, 0, 0.06);
+  box-shadow: inset 0px 0px 70px 0px rgba(0, 0, 0, 0.06);
+  border-radius: var(--border-rounding);
 }
 
 .book-title {
@@ -85,7 +157,7 @@ html, body {
 
   align-self: end;
   font-size: 1.5rem;
-  font-weight: 100;
+
   text-align: center;
   transition: all 0.5s;
   transform: translateY(30px);
@@ -95,6 +167,8 @@ html, body {
 .book-overlay:hover .book-title {
   opacity: 1;
   transform: translateY(0);
+  
+  
 }
 
 .book-author {
@@ -118,8 +192,12 @@ html, body {
 
 .book-info-container {
   display: grid;
-  grid-template-columns: 55px 1fr;
+  grid-template-columns: 60px 1fr;
   padding: 10px;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  font-weight: 200;
+  line-height: 1.42857;
 }
 
 /* Pages */
@@ -129,11 +207,15 @@ html, body {
   transform: translateX(50px);
   opacity: 0;  
   transition-delay: 400ms;
+  font-weight: 300;
+  line-height: 1.42857;
+
 }
 
 .book-overlay:hover .book-pages-desc {
   opacity: 1;
   transform: translateX(0);
+  
 }
 
 .book-pages-value {
@@ -141,6 +223,7 @@ html, body {
   transform: translateX(50px);
   opacity: 0;  
   transition-delay: 700ms;
+
 }
 
 .book-overlay:hover .book-pages-value {
@@ -155,6 +238,8 @@ html, body {
   transform: translateX(50px);
   opacity: 0;  
   transition-delay: 500ms;
+  font-weight: 300;
+  line-height: 1.42857;
 }
 
 .book-overlay:hover .book-ISBN-desc {
@@ -181,6 +266,8 @@ html, body {
   transform: translateX(50px);
   opacity: 0;  
   transition-delay: 600ms;
+  font-weight: 300;
+  line-height: 1.42857;
 }
 
 .book-overlay:hover .book-rating-desc {
@@ -209,10 +296,19 @@ html, body {
   position: absolute;
   height: 100%;
   width: 100%;
+
+  border-radius: var(--border-rounding);
   
   background: rgba(73, 73, 73, 0.842);
   transition: all 0.5s;
   opacity: 0;
+
+  /* MESSING AROUND WITH SHADOW. EITHER DELET OR USE */
+/*
+  -webkit-box-shadow: inset 0px 0px 28px 0px rgba(255,0,255,1);
+  -moz-box-shadow: inset 0px 0px 28px 0px rgba(255,0,255,1);
+  box-shadow: inset 0px 0px 28px 0px rgba(255,0,255,1); */
+  
 }
 
 .book-overlay:hover {
@@ -256,7 +352,6 @@ html, body {
   
 }
 
-/* Read Book and Delete */
 .img-icon {
   height: 25px;
   width: 25px;
@@ -277,6 +372,9 @@ html, body {
   justify-content: center;
   height: 100%;
   width: 100%;
+
+  border-radius: var(--border-rounding);
+
   background: rgba(0,0,0,.7);
   text-align: center;
   transition: all .5s;
@@ -294,7 +392,6 @@ html, body {
   align-items: flex-end;
   width: 100%;
   height: 50%;
-  
 }
 
 .delete-header-text {
@@ -317,9 +414,72 @@ html, body {
     transition-delay: 400ms;
 }
 
-.clickthrough {
+/* Add Book Button */
+.add-button-wrapper {
+  display: flex;
+  position: fixed;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
   pointer-events: none;
 }
+
+.add-button-container {
+  padding: 0 10px 10px 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+
+  
+}
+
+.btn-book-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(6, 215, 223);
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  pointer-events: all;
+  
+}
+
+.img-book-add {
+  height: 70%;
+  width: 70%;
+  pointer-events: none;
+}
+
+.add-book-form {
+  pointer-events: auto;
+}
+
+/* FORM TO ADD BOOKS */
+.book-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  transition: all .35s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.book-form-show {
+  opacity: 1;
+}
+
+.book-form-container {
+  background: rgba(105, 105, 105, 1);
+  height: 90%;
+  width: 90%;
+  border-radius: 7px;
+}
+
+
 /*
 @media screen and (min-width: 320px) {
   html {
