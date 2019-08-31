@@ -70,7 +70,6 @@ function createBookElement(display, book) {
   bookContainer.setAttribute('class', 'book-element');
   bookContainer.setAttribute('data-index', myLibrary.indexOf(book));
   
-
   // Background image container
   const bgImgContainer = document.createElement('img');
   bgImgContainer.setAttribute('class', 'img-bg');
@@ -225,7 +224,6 @@ function createBookElement(display, book) {
 
   // Push book info to container
   bookOverlay.appendChild(bookInfoContainer);
-  console.log(bookOverlay);
 
   // Push to screen
   display.appendChild(bookContainer);
@@ -263,13 +261,15 @@ function displayStatusMessage(message, messageType, book) {
 const addBookBtn = document.getElementById('add-book');
 function showBookForm() {
   const bookForm = document.getElementById('add-book-form');
+  // IMPORTANT!
+  // Need to revert the pointerEvents and display changes
   bookForm.style.pointerEvents = 'all';
   addBookBtn.style.display = 'none';
   bookForm.classList.add('book-form-show');
 }
 addBookBtn.addEventListener('click', () => { showBookForm(); });
 
-const myBook1 = new Book('JavaScript The Definitive Guide', 'David Flanagan', 1096, '9780596805524', 5, true, './assets/images/js-definitive-guide.jpeg');
+const myBook1 = new Book('JavaScript The Definitive Guide', 'David Flanagan', 1096, '9780596805524', 5, true, './assets/images/js-definitive-guide.png');
 addBookToLibrary(myBook1);
 const myBook2 = new Book('The Art of War', 'Sun Tzu', 170, '9781590302255', 1, false, './assets/images/sun-tzu-aow.jpg');
 addBookToLibrary(myBook2);

@@ -57,7 +57,6 @@ body {
   flex-direction: column;
   height: 100%;
   width: 100%;
-
 }
 
 .status-bar-container {
@@ -89,13 +88,11 @@ body {
   -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.67);
   -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.67);
   box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.67);
-
 }
 
 /* LOGO */
 .logo-container {
   display: flex;
-
 }
 
 .img-logo {
@@ -107,12 +104,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
-  /* INSET SHADOW HERE LOOKS PRETTY GOOD.
-    MODIFY TO USE OR DELETE 
-  -webkit-box-shadow: inset 0px 0px 28px 0px rgba(255,0,255,1);
-  -moz-box-shadow: inset 0px 0px 28px 0px rgba(255,0,255,1);
-  box-shadow: inset 0px 0px 28px 0px rgba(255,0,255,1); */
 }
 
 .book-element {
@@ -124,10 +115,11 @@ body {
 
   border-radius: var(--border-rounding);
 
-  -webkit-box-shadow: 1px 12px 17px -6px rgba(0,0,0,0.73);
-  -moz-box-shadow: 1px 12px 17px -6px rgba(0,0,0,0.73);
-  box-shadow: 1px 12px 17px -6px rgba(0,0,0,0.73);
+  -webkit-box-shadow: 1px 1px 5px 1px rgba(59,59,59,0.23);
+  -moz-box-shadow: 1px 1px 5px 1px rgba(59,59,59,0.23);
+  box-shadow: 1px 1px 5px 1px rgba(59,59,59,0.23);
 
+  border: 1px solid rgba(39, 39, 39,0.3);
   
 }
 
@@ -137,6 +129,7 @@ body {
   width: 100%;
   pointer-events: none;
   border-radius: var(--border-rounding);
+  
 }
 
 .img-bg-inset {
@@ -442,6 +435,7 @@ body {
   width: 55px;
   border-radius: 50%;
   pointer-events: all;
+  border: 1px solid rgba(39, 39, 39,0.1);
   
 }
 
@@ -449,6 +443,7 @@ body {
   height: 70%;
   width: 70%;
   pointer-events: none;
+  
 }
 
 .add-book-form {
