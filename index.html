@@ -15,8 +15,8 @@ Book icon:
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Red+Hat+Text:400,400i,500,500i,700&display=swap" rel="stylesheet"> 
   </head>
   <body>
     <div class="wrapper-main">
@@ -27,8 +27,14 @@ Book icon:
           </div>
         </div>
         <div id="display-books" class="container-books-display">
-          <!--The structure below is the same structure used when generating books.-->
-          <!--
+          <!-- The structure below is the same structure used 
+                when generating books. 
+                Use this for designing classes then add the
+                elements in JS.
+                NOTE: Also need to comment out the line in book.js
+                that clears the display-books container:
+                // displayElement.innerHTML = '';
+          -->
           <div class="book-element">
             <img class="img-bg" src="/assets/images/clean-code-martin.jpg">
               <div class="img-bg-inset">
@@ -69,7 +75,7 @@ Book icon:
                 </div>
               </div>
             </div>
-          </div> -->
+          </div> 
         </div>
         <div class="status-bar-container">
           <div id="status-bar" class="status-bar-content">

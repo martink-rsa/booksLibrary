@@ -10,6 +10,7 @@
   */
   --border-rounding: 2%;
   --body-font: 'Poppins', sans-serif;
+  --colour-trim-1: rgb(1,159,182);
 }
 
 * {
@@ -26,8 +27,8 @@
 }
 
 html, body {
-
-  font-family: 'Red Hat Text', sans-serif;
+  font-family: 'Playfair Display', serif;
+  /*font-family: 'Red Hat Text', sans-serif;*/
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -64,7 +65,7 @@ body {
   position: fixed;
   height: 50px;
   width: 100%;
-  bottom: 0;
+  top: 0;
   padding: 0 20px 0 0;
 }
 
@@ -93,11 +94,12 @@ body {
 /* LOGO */
 .logo-container {
   display: flex;
+  height: 40px;
 }
 
 .img-logo {
-  max-width: 100%;
-  height: auto;
+  max-width: auto;
+  height: 100%;
 }
 
 .container-books-display {
@@ -112,15 +114,11 @@ body {
   height: 300px;
   margin: 10px 20px;
   color: white;
-
   border-radius: var(--border-rounding);
-
   -webkit-box-shadow: 1px 1px 5px 1px rgba(59,59,59,0.23);
   -moz-box-shadow: 1px 1px 5px 1px rgba(59,59,59,0.23);
   box-shadow: 1px 1px 5px 1px rgba(59,59,59,0.23);
-
   border: 1px solid rgba(39, 39, 39,0.3);
-  
 }
 
 .img-bg {
@@ -129,7 +127,6 @@ body {
   width: 100%;
   pointer-events: none;
   border-radius: var(--border-rounding);
-  
 }
 
 .img-bg-inset {
@@ -147,21 +144,33 @@ body {
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 2;
-
   align-self: end;
   font-size: 1.5rem;
-
   text-align: center;
+  display:inline-block; 
+  margin:0;
   transition: all 0.5s;
   transform: translateY(30px);
   opacity: 0;
+  padding-bottom: 5px;
 }
 
 .book-overlay:hover .book-title {
   opacity: 1;
   transform: translateY(0);
-  
-  
+}
+
+.book-title:after {
+  display: block;
+  content: '';
+  border-bottom: solid 3px var(--colour-trim-1);  
+  transition: all 550ms ease-in-out;
+  transform: scaleX(0);  
+}
+
+.book-overlay:hover .book-title:after { 
+  transition-delay: 400ms;
+  transform: scaleX(.5); 
 }
 
 .book-author {
@@ -196,86 +205,92 @@ body {
 /* Pages */
 
 .book-pages-desc {
-  transition: all 0.5s;
   transform: translateX(50px);
   opacity: 0;  
-  transition-delay: 400ms;
   font-weight: 300;
   line-height: 1.42857;
-
+  transition: all 1s ease;
 }
 
 .book-overlay:hover .book-pages-desc {
+  transition: all 0.5s;
+  transition-delay: 400ms;
   opacity: 1;
   transform: translateX(0);
-  
 }
 
-.book-pages-value {
-  transition: all 0.5s;
+.book-pages-value {  
   transform: translateX(50px);
   opacity: 0;  
-  transition-delay: 700ms;
+  transition: all 1s ease;
 
 }
 
 .book-overlay:hover .book-pages-value {
-  opacity: 1;
   transform: translateX(0);
+  opacity: 1;
+  transition: all 0.5s;
+  transition-delay: 700ms;
 }
 
 /* ISBN */
 
 .book-ISBN-desc {
-  transition: all 0.5s;
   transform: translateX(50px);
   opacity: 0;  
-  transition-delay: 500ms;
   font-weight: 300;
   line-height: 1.42857;
+  transition: all 1s ease;
 }
 
 .book-overlay:hover .book-ISBN-desc {
   opacity: 1;
   transform: translateX(0);
+  transition: all 0.5s;
+  transition-delay: 500ms;
 }
 
 .book-ISBN-value {
-  transition: all 0.5s;
+
   transform: translateX(50px);
   opacity: 0;  
-  transition-delay: 800ms;
+  transition: all 1s ease;
+  
 }
 
 .book-overlay:hover .book-ISBN-value {
   opacity: 1;
   transform: translateX(0);
+  transition: all 0.5s;
+  transition-delay: 800ms;
 }
 
 /* Rating */
 
 .book-rating-desc {
-  transition: all 0.5s;
   transform: translateX(50px);
   opacity: 0;  
-  transition-delay: 600ms;
   font-weight: 300;
   line-height: 1.42857;
+  transition: all 1s ease;
 }
 
 .book-overlay:hover .book-rating-desc {
   opacity: 1;
   transform: translateX(0);
+  transition: all 0.5s;
+  transition-delay: 600ms;
 }
 
 .book-rating-value {
-  transition: all 0.5s;
   transform: translateX(50px);
   opacity: 0;  
-  transition-delay: 900ms;
+  transition: all 1s ease;
 }
 
 .book-overlay:hover .book-rating-value {
+  transition: all 0.5s;
+  transition-delay: 900ms;
   opacity: 1;
   transform: translateX(0);
 }
@@ -297,10 +312,10 @@ body {
   opacity: 0;
 
   /* MESSING AROUND WITH SHADOW. EITHER DELET OR USE */
-/*
-  -webkit-box-shadow: inset 0px 0px 28px 0px rgba(255,0,255,1);
-  -moz-box-shadow: inset 0px 0px 28px 0px rgba(255,0,255,1);
-  box-shadow: inset 0px 0px 28px 0px rgba(255,0,255,1); */
+
+  -webkit-box-shadow: inset 0px 0px 28px 0px rgba(0, 195, 255,0.2);
+  -moz-box-shadow: inset 0px 0px 28px 0px rgb(0, 195, 255,0.2);
+  box-shadow: inset 0px 0px 28px 0px rgba(0, 195, 255,0.2); 
   
 }
 
@@ -331,17 +346,22 @@ body {
   justify-content: center;
   align-items: center;
   background: white;
+  border: 1px solid rgba(39, 39, 39,0.2);
   border-radius: 50%;
   padding: 2px;
   margin: 0 5px;
   height: 30px;
   width: 30px;
-  transition: all .5s;
+  transition: all 220ms;
   
 }
 
 .img-circle:hover {
-  background: pink;
+  background: var(--colour-trim-1);
+  
+
+  border: 1px solid rgba(39, 39, 39,0.1);
+  
   
 }
 
@@ -430,7 +450,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(6, 215, 223);
+  background: var(--colour-trim-1);
   height: 55px;
   width: 55px;
   border-radius: 50%;

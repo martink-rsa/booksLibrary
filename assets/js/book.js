@@ -231,7 +231,7 @@ function createBookElement(display, book) {
 
 function render() {
   const displayElement = document.getElementById('display-books');
-  displayElement.innerHTML = '';
+  //displayElement.innerHTML = '';
   for (let i = 0; i < myLibrary.length; i += 1) {
     createBookElement(displayElement, myLibrary[i]);
   }
@@ -239,8 +239,9 @@ function render() {
 
 function displayStatusMessage(message, messageType, book) {
   const statusBar = document.getElementById('status-bar');
+  const trimColour1 = getComputedStyle(document.documentElement).getPropertyValue('--colour-trim-1');
   if (messageType === 'info') {
-    statusBar.style.background = 'lightblue';
+    statusBar.style.background = trimColour1;
     // Display info message
   } else if (messageType === 'caution') {
     // Display caution message
@@ -251,7 +252,6 @@ function displayStatusMessage(message, messageType, book) {
   }
   statusBar.classList.add('status-bar-content-show');
   statusBar.innerText = `'${book.title}' has been deleted.`;
-
   setTimeout(() => {
     statusBar.classList.remove('status-bar-content-show');
     statusBar.innerText = '';
