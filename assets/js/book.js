@@ -57,7 +57,7 @@ function deleteBookFromLibrary(book) {
   //    e.g. do not splice if indexOf = -1
   myLibrary.splice(myLibrary.indexOf(book), 1);
   render();
-  displayStatusMessage('Book has been deleted.', 'info', book);
+  displayStatusMessage(`'${book.title}' has been deleted.`, 'info');
 }
 
 function changeBookReadStatus(book) {
@@ -69,7 +69,7 @@ function createBookElement(display, book) {
   const bookContainer = document.createElement('div');
   bookContainer.setAttribute('class', 'book-element');
   bookContainer.setAttribute('data-index', myLibrary.indexOf(book));
-  
+
   // Background image container
   const bgImgContainer = document.createElement('img');
   bgImgContainer.setAttribute('class', 'img-bg');
@@ -231,13 +231,13 @@ function createBookElement(display, book) {
 
 function render() {
   const displayElement = document.getElementById('display-books');
-  //displayElement.innerHTML = '';
+  displayElement.innerHTML = '';
   for (let i = 0; i < myLibrary.length; i += 1) {
     createBookElement(displayElement, myLibrary[i]);
   }
 }
 
-function displayStatusMessage(message, messageType, book) {
+function displayStatusMessage(message, messageType) {
   const statusBar = document.getElementById('status-bar');
   const trimColour1 = getComputedStyle(document.documentElement).getPropertyValue('--colour-trim-1');
   if (messageType === 'info') {
@@ -251,7 +251,7 @@ function displayStatusMessage(message, messageType, book) {
     statusBar.style.background = 'red';
   }
   statusBar.classList.add('status-bar-content-show');
-  statusBar.innerText = `'${book.title}' has been deleted.`;
+  statusBar.innerText = `${message}`;
   setTimeout(() => {
     statusBar.classList.remove('status-bar-content-show');
     statusBar.innerText = '';
@@ -268,6 +268,41 @@ function showBookForm() {
   bookForm.classList.add('book-form-show');
 }
 addBookBtn.addEventListener('click', () => { showBookForm(); });
+
+const saveBookBtn = document.getElementById('btn-save-book');
+function saveBook() {
+  const newTitle = document.getElementById('input-book-title').value;
+  const newAuthor = document.getElementById('input-book-author').value;
+  const newPages = document.getElementById('input-book-pages').value;
+  const newISBN = document.getElementById('input-book-ISBN').value;
+  const newRating = document.getElementById('input-book-rating').value;
+  
+  if (newTitle && newAuthor && newPages && newISBN && newRating) {
+    const newBook = new Book(newTitle, newAuthor, newPages, newISBN, newRating, false);
+    addBookToLibrary(newBook);
+    document.getElementById('input-book-title').value = '';
+    document.getElementById('input-book-author').value = '';
+    document.getElementById('input-book-pages').value = '';
+    document.getElementById('input-book-ISBN').value = '';
+    document.getElementById('input-book-rating').value = '';
+    hideBookForm();
+    displayStatusMessage(`'${newBook.title}' has been saved.`, 'info');
+    render();
+  } else {
+    console.log("ERROR");
+  }
+  
+}
+saveBookBtn.addEventListener('click', () => { saveBook(); });
+
+const cancelSaveBtn = document.getElementById('btn-cancel-save');
+function hideBookForm() {
+  const bookForm = document.getElementById('add-book-form');
+  bookForm.style.pointerEvents = 'none';
+  addBookBtn.style.display = 'flex';
+  bookForm.classList.remove('book-form-show');
+}
+cancelSaveBtn.addEventListener('click', () => { hideBookForm(); });
 
 const myBook1 = new Book('JavaScript The Definitive Guide', 'David Flanagan', 1096, '9780596805524', 5, true, './assets/images/js-definitive-guide.png');
 addBookToLibrary(myBook1);

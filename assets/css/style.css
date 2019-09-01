@@ -60,30 +60,6 @@ body {
   width: 100%;
 }
 
-.status-bar-container {
-  display: flex;
-  position: fixed;
-  height: 50px;
-  width: 100%;
-  top: 0;
-  padding: 0 20px 0 0;
-}
-
-.status-bar-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  border-radius: 5px 5px 0 0;
-  transition: all 1s;
-  opacity: 0; 
-}
-
-.status-bar-content-show {
-  opacity: 1;
-}
-
 .header-container {
   background: gray;
   -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.67);
@@ -106,6 +82,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  min-width: 100%;
 }
 
 .book-element {
@@ -427,7 +404,7 @@ body {
     transition-delay: 400ms;
 }
 
-/* Add Book Button */
+/* BUTTON: ADD BOOK */
 .add-button-wrapper {
   display: flex;
   position: fixed;
@@ -442,8 +419,6 @@ body {
   display: flex;
   justify-content: flex-end;
   width: 100%;
-
-  
 }
 
 .btn-book-add {
@@ -466,34 +441,142 @@ body {
   
 }
 
-.add-book-form {
-  pointer-events: auto;
-}
+
 
 /* FORM TO ADD BOOKS */
+
+.add-book-form {
+  pointer-events: auto;
+  opacity: 1;
+}
+
 .book-form-wrapper {
+  z-index: 7000;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
   height: 100%;
   width: 100%;
-  transition: all .35s;
+  
+  transition: opacity 700ms;
   opacity: 0;
   pointer-events: none;
+  
+  font-family: var(--body-font);
+  font-size: 0.8rem;
+
+  
 }
 
-.book-form-show {
-  opacity: 1;
+
+.book-form-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:darkgray;
+  height: auto;
+  width: 90%;
+  border-radius: 5px;
+  max-width: 320px;
+  overflow: auto;
+
 }
 
 .book-form-container {
-  background: rgba(105, 105, 105, 1);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto repeat(10, auto) auto;
   height: 90%;
   width: 90%;
   border-radius: 7px;
 }
 
+.book-form-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-family: 'Playfair Display', serif;
+  padding-top: 10px;
+}
+
+.form-text-container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.form-text-label {
+  padding: 5px 0 0 12px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.form-text-input { 
+  height: 30px;
+  border-radius: 5px;
+  padding: 0 10px;
+  box-shadow: none;
+  transition: box-shadow 1s;
+}
+
+.form-text-input:focus {
+  border: 2px solid var(--colour-trim-1);
+  -webkit-box-shadow: 1px 1px 5px 1px rgba(59,59,59,0.23);
+  -moz-box-shadow: 1px 1px 5px 1px rgba(59,59,59,0.23);
+  box-shadow: 1px 1px 5px 1px rgba(59,59,59,0.23);
+  outline: none;
+}
+
+.form-text-input:focus ~ .form-text-label {
+  opacity: 1;
+  
+}
+
+
+.form-buttons-container {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+.book-form-button {
+  height: 30px;
+  width: 100px;
+  margin: 5px 2px;
+}
+
+
+.book-form-show {
+  opacity: 1;
+}
+
+
+/* STATUS BAR */
+.status-bar-container {
+  display: flex;
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  top: 0;
+  padding: 0 20px 0 0;
+  font-family: var(--body-font);
+  text-align: center;
+}
+
+.status-bar-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  transition: opacity 1s;
+  opacity: 0; 
+}
+
+.status-bar-content-show {
+  opacity: 1;
+}
 
 /*
 @media screen and (min-width: 320px) {

@@ -27,7 +27,8 @@ Book icon:
           </div>
         </div>
         <div id="display-books" class="container-books-display">
-          <!-- The structure below is the same structure used 
+          
+                    <!-- The structure below is the same structure used 
                 when generating books. 
                 Use this for designing classes then add the
                 elements in JS.
@@ -35,10 +36,12 @@ Book icon:
                 that clears the display-books container:
                 // displayElement.innerHTML = '';
           -->
+          <!--
           <div class="book-element">
             <img class="img-bg" src="/assets/images/clean-code-martin.jpg">
               <div class="img-bg-inset">
                 <div class="book-overlay">
+                  
                   <div class="delete-prompt-overlay">
                     <div class="delete-prompt-header">
                       <span class="delete-header-text">DELETE BOOK</span>
@@ -75,8 +78,9 @@ Book icon:
                 </div>
               </div>
             </div>
-          </div> 
-        </div>
+          </div>
+        --> 
+        </div> <!-- END OF BOOK DISPLAY AREA -->
         <div class="status-bar-container">
           <div id="status-bar" class="status-bar-content">
           </div>
@@ -90,16 +94,52 @@ Book icon:
         </div>
         <!-- FORM: Add new Book -->
         <div id="add-book-form" class="book-form-wrapper">
+          <div class="book-form-background">
             <div class="book-form-container">
-              Add book
-              Title
-              Author
-              Pages
-              ISBN
-              Rating
-              IsRead?
+              <div class="book-form-header">
+                Add new book
+              </div>
+              <!-- Label and Text Input elements are reversed, and
+                      thenflex direction is reversed, so that the next
+                      child selector (~) can be used to select the text
+                      above the text input.
+              -->
+              <form action="" id="form-add-book">
+                <div class="form-text-container"> 
+                    <input type="text" id="input-book-title" name="input-book-title" class="form-text-input" placeholder="Book Title" required>
+                  <label class="form-text-label" for="input-book-title">Title</label>
+
+                </div>
+
+                <div class="form-text-container"> 
+                  <input type="text" id="input-book-author" class="form-text-input" placeholder="Book Author" required>
+                  <label class="form-text-label" for="input-book-author">Author</label>
+                </div>
+
+                <div class="form-text-container"> 
+                  <input type="number" id="input-book-pages" class="form-text-input" placeholder="Book Pages" required>
+                  <label class="form-text-label" for="input-book-pages">Pages</label>
+                </div>
+
+                <div class="form-text-container"> 
+                  <input type="number" id="input-book-ISBN" class="form-text-input" placeholder="Book ISBN" required>
+                  <label class="form-text-label" for="input-book-ISBN">ISBN</label>
+                </div>
+              
+                <div class="form-text-container"> 
+                  <input type="number" id="input-book-rating" class="form-text-input" placeholder="Book Rating" required>
+                  <label class="form-text-label" for="input-book-rating">Rating</label>
+                </div>
+
+                <div class="form-buttons-container">
+                  <input type="submit" id="btn-save-book" class="book-form-button"></button>
+                  <button id="btn-cancel-save" class="book-form-button">CANCEL</button>
+                </div>
+              </form>
             </div>
+          </div>
         </div>
+        <!-- END FORM -->
       </div>
     </div>
   </body>
