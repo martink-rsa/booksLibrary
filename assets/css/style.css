@@ -71,11 +71,27 @@ body {
 .logo-container {
   display: flex;
   height: 40px;
+  padding: 5px;
+  align-items: center;
+}
+max-width: auto;
+.logo-circle {
+  display: flex;
+  background: var(--colour-trim-1);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
 
-.img-logo {
-  max-width: auto;
+.img-logo-img {
+  margin: auto;
+  height: 70%;
+}
+
+.logo-text {
   height: 100%;
+  padding-left: 5px;
+  font-size: 1.5rem;
 }
 
 .container-books-display {
@@ -140,6 +156,7 @@ body {
 .book-title:after {
   display: block;
   content: '';
+  padding-top: 2px;
   border-bottom: solid 3px var(--colour-trim-1);  
   transition: all 550ms ease-in-out;
   transform: scaleX(0);  
@@ -288,11 +305,9 @@ body {
   transition: all 0.5s;
   opacity: 0;
 
-  /* MESSING AROUND WITH SHADOW. EITHER DELET OR USE */
-
-  -webkit-box-shadow: inset 0px 0px 28px 0px rgba(0, 195, 255,0.2);
-  -moz-box-shadow: inset 0px 0px 28px 0px rgb(0, 195, 255,0.2);
-  box-shadow: inset 0px 0px 28px 0px rgba(0, 195, 255,0.2); 
+  -webkit-box-shadow: inset 0px 0px 28px 0px rgba(0, 195, 255,0.15);
+  -moz-box-shadow: inset 0px 0px 28px 0px rgb(0, 195, 255,0.15);
+  box-shadow: inset 0px 0px 28px 0px rgba(0, 195, 255,0.15); 
   
 }
 
@@ -330,16 +345,11 @@ body {
   height: 30px;
   width: 30px;
   transition: all 220ms;
-  
 }
 
 .img-circle:hover {
   background: var(--colour-trim-1);
-  
-
   border: 1px solid rgba(39, 39, 39,0.1);
-  
-  
 }
 
 .img-icon {
@@ -426,12 +436,20 @@ body {
   justify-content: center;
   align-items: center;
   background: var(--colour-trim-1);
+  opacity: 0.8;
   height: 55px;
   width: 55px;
   border-radius: 50%;
   pointer-events: all;
   border: 1px solid rgba(39, 39, 39,0.1);
-  
+  -webkit-box-shadow: 1px 1px 5px 1px rgba(59,59,59,0.23);
+  -moz-box-shadow: 1px 1px 5px 1px rgba(59,59,59,0.23);
+  box-shadow: 1px 1px 5px 1px rgba(59,59,59,0.23);
+  transition: opacity 300ms;
+}
+
+.btn-book-add:hover {
+  opacity: 1;
 }
 
 .img-book-add {
@@ -465,8 +483,6 @@ body {
   
   font-family: var(--body-font);
   font-size: 0.8rem;
-
-  
 }
 
 
@@ -479,8 +495,6 @@ body {
   width: 90%;
   border-radius: 5px;
   max-width: 320px;
-  overflow: auto;
-
 }
 
 .book-form-container {
@@ -514,10 +528,12 @@ body {
 
 .form-text-input { 
   height: 30px;
+  width: auto;
   border-radius: 5px;
   padding: 0 10px;
   box-shadow: none;
   transition: box-shadow 1s;
+
 }
 
 .form-text-input:focus {
@@ -528,9 +544,12 @@ body {
   outline: none;
 }
 
+/* The order of label and text input were reversed, and flex-direction
+      reversed so that the ~ selector could be used to change the 
+      label
+*/
 .form-text-input:focus ~ .form-text-label {
   opacity: 1;
-  
 }
 
 

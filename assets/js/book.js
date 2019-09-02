@@ -61,7 +61,23 @@ function deleteBookFromLibrary(book) {
 }
 
 function changeBookReadStatus(book) {
-
+  let bookElement;
+  const bookContainer = document.getElementById('display-books');
+  for (let i = 0; i < bookContainer.children.length; i += 1) {
+    if (+bookContainer.children[i].getAttribute('data-index') === myLibrary.indexOf(book)) {
+      bookElement = bookContainer.children[i];
+    }
+  }
+  const imgContainer = bookElement.getElementsByClassName('img-circle');
+  const imgElement = bookElement.getElementsByClassName('img-icon');
+  if (book.isRead) {
+    imgContainer[0].setAttribute('title', 'Book not read');
+    imgElement[0].setAttribute('src', './assets/images/closed-book.svg');
+  } else {
+    imgContainer[0].setAttribute('title', 'Book read');
+    imgElement[0].setAttribute('src', './assets/images/open-book.svg');
+  }
+  book.isRead = !book.isRead;
 }
 
 function createBookElement(display, book) {
@@ -80,7 +96,6 @@ function createBookElement(display, book) {
   const bgImgShadowInset = document.createElement('div');
   bgImgShadowInset.setAttribute('class', 'img-bg-inset');
   bookContainer.appendChild(bgImgShadowInset);
-
 
   // Overlay on hover
   const bookOverlay = document.createElement('div');
@@ -166,7 +181,15 @@ function createBookElement(display, book) {
 
   iconImage = document.createElement('img');
   iconImage.setAttribute('class', 'img-icon');
-  iconImage.setAttribute('src', './assets/images/tick.svg');
+  if (book.isRead) {
+    iconImage.setAttribute('src', './assets/images/open-book.svg');
+    iconImage.setAttribute('alt', 'Book read');
+    elementTemplate.setAttribute('title', 'Book read');
+  } else {
+    iconImage.setAttribute('src', './assets/images/closed-book.svg');
+    iconImage.setAttribute('alt', 'Book not read');
+    elementTemplate.setAttribute('title', 'Book not read');
+  }
 
   elementTemplate.appendChild(iconImage);
   iconOverlay.appendChild(elementTemplate);
@@ -174,6 +197,7 @@ function createBookElement(display, book) {
   // Icon: Delete Book
   elementTemplate = document.createElement('div');
   elementTemplate.setAttribute('class', 'img-circle');
+  elementTemplate.setAttribute('title', 'Delete Book');
   elementTemplate.addEventListener('click', (e) => { showDeleteDialog(book, e); });
 
   iconImage = document.createElement('img');
@@ -243,10 +267,10 @@ function displayStatusMessage(message, messageType) {
   if (messageType === 'info') {
     statusBar.style.background = trimColour1;
     // Display info message
-  } else if (messageType === 'caution') {
+  } else if (messageType === 'warning') {
     // Display caution message
     statusBar.style.background = 'yellow';
-  } else if (messageType === 'warning') {
+  } else if (messageType === 'error') {
     // Display warning message
     statusBar.style.background = 'red';
   }
@@ -275,8 +299,7 @@ function saveBook() {
   const newAuthor = document.getElementById('input-book-author').value;
   const newPages = document.getElementById('input-book-pages').value;
   const newISBN = document.getElementById('input-book-ISBN').value;
-  const newRating = document.getElementById('input-book-rating').value;
-  
+  const newRating = document.getElementById('input-book-rating').value; 
   if (newTitle && newAuthor && newPages && newISBN && newRating) {
     const newBook = new Book(newTitle, newAuthor, newPages, newISBN, newRating, false);
     addBookToLibrary(newBook);
@@ -289,7 +312,7 @@ function saveBook() {
     displayStatusMessage(`'${newBook.title}' has been saved.`, 'info');
     render();
   } else {
-    console.log("ERROR");
+    displayStatusMessage('Error processing your request.', 'error');
   }
   
 }
@@ -304,14 +327,15 @@ function hideBookForm() {
 }
 cancelSaveBtn.addEventListener('click', () => { hideBookForm(); });
 
-const myBook1 = new Book('JavaScript The Definitive Guide', 'David Flanagan', 1096, '9780596805524', 5, true, './assets/images/js-definitive-guide.png');
+const myBook1 = new Book('JavaScript The Definitive Guide', 'David Flanagan', 1096, '9780596805524', 4, true, './assets/images/js-definitive-guide.png');
 addBookToLibrary(myBook1);
-const myBook2 = new Book('The Art of War', 'Sun Tzu', 170, '9781590302255', 1, false, './assets/images/sun-tzu-aow.jpg');
+const myBook2 = new Book('The Art of War', 'Sun Tzu', 170, '9781590302255', 4, false, './assets/images/sun-tzu-aow.jpg');
 addBookToLibrary(myBook2);
-const myBook3 = new Book('Clean Code', 'Robert C. Martin', 701, '9780132350884', 3, false, './assets/images/clean-code-martin.jpg');
+const myBook3 = new Book('Clean Code', 'Robert C. Martin', 701, '9780132350884', 5, true, './assets/images/clean-code-martin.jpg');
 addBookToLibrary(myBook3);
-const myBook4 = new Book('Why I love IBMi', 'Briggs I. Bi-em', 121, '1312398765432', 2, false, './assets/images/briggs-ibm.png');
+const myBook4 = new Book('Why I love IBMi', 'Briggs I. Bi-em', 121, '1312398765432', 5, true, './assets/images/briggs-ibm.png');
 addBookToLibrary(myBook4);
 const myBook5 = new Book('Unknown Book', 'Unknown Author', 100, '3789654113123', 5, false);
 addBookToLibrary(myBook5);
+
 render();

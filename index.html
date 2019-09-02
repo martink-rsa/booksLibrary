@@ -7,7 +7,7 @@ Trash icon:
 
 Book icon:
 <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
-
+<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
 -->
 
 <!DOCTYPE html>
@@ -23,7 +23,12 @@ Book icon:
       <div class="container-main">
         <div id="header" class="header-container">
           <div class="logo-container">
-            <img class="img-logo" src="assets/images/logo.png" alt="Logo">
+            <div class="logo-circle">
+                <img class="img-logo-img" src="assets/images/three-books.svg" alt="Logo">
+            </div>
+            <div class="logo-text-container">
+              <span class="logo-text">LIBRARY</span>
+            </div>
           </div>
         </div>
         <div id="display-books" class="container-books-display">
@@ -117,23 +122,23 @@ Book icon:
                 </div>
 
                 <div class="form-text-container"> 
-                  <input type="number" id="input-book-pages" class="form-text-input" placeholder="Book Pages" required>
+                  <input type="number" id="input-book-pages" class="form-text-input" min="1" placeholder="Book Pages" required>
                   <label class="form-text-label" for="input-book-pages">Pages</label>
                 </div>
 
                 <div class="form-text-container"> 
-                  <input type="number" id="input-book-ISBN" class="form-text-input" placeholder="Book ISBN" required>
+                  <input type="number" id="input-book-ISBN" class="form-text-input" min="1"  placeholder="Book ISBN" required>
                   <label class="form-text-label" for="input-book-ISBN">ISBN</label>
                 </div>
               
                 <div class="form-text-container"> 
-                  <input type="number" id="input-book-rating" class="form-text-input" placeholder="Book Rating" required>
+                  <input type="number" id="input-book-rating" class="form-text-input" min="0" placeholder="Book Rating" required>
                   <label class="form-text-label" for="input-book-rating">Rating</label>
                 </div>
 
                 <div class="form-buttons-container">
-                  <input type="submit" id="btn-save-book" class="book-form-button"></button>
-                  <button id="btn-cancel-save" class="book-form-button">CANCEL</button>
+                  <input type="submit" id="btn-save-book" class="book-form-button" value="Save">
+                  <button id="btn-cancel-save" class="book-form-button">Cancel</button>
                 </div>
               </form>
             </div>
