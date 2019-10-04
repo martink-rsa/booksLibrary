@@ -327,7 +327,19 @@ function hideBookForm() {
   addBookBtn.style.display = 'flex';
   bookForm.classList.remove('book-form-show');
 }
+function clearInputFields() {
+  const inputs = document.querySelectorAll('input');
+  
+  inputs.forEach( input => {
+    input.value = "";
+  });
+};
+
 cancelSaveBtn.addEventListener('click', () => { hideBookForm(); });
+cancelSaveBtn.addEventListener('click', () => {
+  hideBookForm();
+  clearInputFields();
+});
 
 const myBook1 = new Book('JavaScript The Definitive Guide', 'David Flanagan', 1096, '9780596805524', 4, true, './assets/images/js-definitive-guide.png');
 addBookToLibrary(myBook1);
