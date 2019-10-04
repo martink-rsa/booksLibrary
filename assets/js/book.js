@@ -287,6 +287,7 @@ function showBookForm() {
   const bookForm = document.getElementById('add-book-form');
   // IMPORTANT!
   // Need to revert the pointerEvents and display changes
+  document.getElementById('form-add-book').noValidate = false;
   bookForm.style.pointerEvents = 'all';
   addBookBtn.style.display = 'none';
   bookForm.classList.add('book-form-show');
@@ -299,7 +300,7 @@ function saveBook() {
   const newAuthor = document.getElementById('input-book-author').value;
   const newPages = document.getElementById('input-book-pages').value;
   const newISBN = document.getElementById('input-book-ISBN').value;
-  const newRating = document.getElementById('input-book-rating').value; 
+  const newRating = document.getElementById('input-book-rating').value;
   if (newTitle && newAuthor && newPages && newISBN && newRating) {
     const newBook = new Book(newTitle, newAuthor, newPages, newISBN, newRating, false);
     addBookToLibrary(newBook);
@@ -314,13 +315,14 @@ function saveBook() {
   } else {
     displayStatusMessage('Error processing your request.', 'error');
   }
-  
+
 }
 saveBookBtn.addEventListener('click', () => { saveBook(); });
 
 const cancelSaveBtn = document.getElementById('btn-cancel-save');
 function hideBookForm() {
   const bookForm = document.getElementById('add-book-form');
+  document.getElementById('form-add-book').noValidate = true;
   bookForm.style.pointerEvents = 'none';
   addBookBtn.style.display = 'flex';
   bookForm.classList.remove('book-form-show');
@@ -337,5 +339,10 @@ const myBook4 = new Book('Why I love IBMi', 'Briggs I. Bi-em', 121, '13123987654
 addBookToLibrary(myBook4);
 const myBook5 = new Book('Unknown Book', 'Unknown Author', 100, '3789654113123', 5, false);
 addBookToLibrary(myBook5);
+
+// prevent page refresh
+document.getElementById('form-add-book').addEventListener('submit', (e) => {
+  e.preventDefault();
+});
 
 render();
