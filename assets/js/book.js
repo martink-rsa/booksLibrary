@@ -292,7 +292,7 @@ function showBookForm() {
   addBookBtn.style.display = 'none';
   bookForm.classList.add('book-form-show');
 }
-addBookBtn.addEventListener('click', () => { showBookForm(); });
+addBookBtn.addEventListener('click', showBookForm);
 
 const saveBookBtn = document.getElementById('btn-save-book');
 function saveBook() {
@@ -317,7 +317,7 @@ function saveBook() {
   }
 
 }
-saveBookBtn.addEventListener('click', () => { saveBook(); });
+saveBookBtn.addEventListener('click', saveBook);
 
 const cancelSaveBtn = document.getElementById('btn-cancel-save');
 function hideBookForm() {
@@ -335,7 +335,6 @@ function clearInputFields() {
   });
 };
 
-cancelSaveBtn.addEventListener('click', () => { hideBookForm(); });
 cancelSaveBtn.addEventListener('click', () => {
   hideBookForm();
   clearInputFields();
